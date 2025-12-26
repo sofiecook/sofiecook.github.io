@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofie Cook - Data Engineer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #d4691a 0%, #8b4513 100%);
+            color: #1f2933;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4691a;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #1f2933;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d4691a;
+        }
+        
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .headshot-container {
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .headshot {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .headshot:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+        }
+        
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #d4691a;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .content-section {
+            background: #f9fafb;
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1f2933;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .skill-card h3 {
+            color: #d4691a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+        }
+        
+        .skill-card li {
+            padding: 0.4rem 0;
+            color: #4b5563;
+        }
+        
+        .skill-card li:before {
+            content: "▹ ";
+            color: #d4691a;
+            font-weight: bold;
+        }
+        
+        .about-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-timeline {
+            margin-top: 2rem;
+        }
+        
+        .experience-item {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #d4691a;
+        }
+        
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+        
+        .experience-header h3 {
+            color: #1f2933;
+            font-size: 1.4rem;
+        }
+        
+        .experience-meta {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+        
+        .experience-description {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        .education-section {
+            background: linear-gradient(135deg, #d4691a 0%, #8b4513 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .education-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1f2933;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+        
+        .education-card h3 {
+            color: #d4691a;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-details {
+            color: #4b5563;
+            margin-top: 1rem;
+            line-height: 1.8;
+        }
+        
+        .education-details strong {
+            color: #1f2933;
+        }
+        
+        footer {
+            background: #1f2933;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer a {
+            color: #d4691a;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">SC</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="headshot-container">
+            <img src="assets/straight shot.jpg" alt="Sofie Cook" class="headshot">
+        </div>
+        <h1>Hi, I'm Sofie Cook</h1>
+        <div class="subtitle">Data Engineer | AI Developer | Solutions Architect</div>
+        <p>Northeastern University graduate specializing in Data Science and Mathematics. Currently building AI-powered solutions and data pipelines at Textron, transforming how organizations leverage data for automation and insights.</p>
+        <div class="cta-buttons">
+            <a href="projects.html" class="btn btn-primary">View My Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Tools and technologies I use to build data-driven solutions</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>SQL</li>
+                        <li>R</li>
+                        <li>HTML</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Cloud & Data Platforms</h3>
+                    <ul>
+                        <li>Azure & Databricks</li>
+                        <li>AWS (EC2, Lambda, RDS, S3)</li>
+                        <li>Power BI & Tableau</li>
+                        <li>Alteryx</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Python Libraries</h3>
+                    <ul>
+                        <li>Pandas, NumPy</li>
+                        <li>Scikit-Learn, Torch, Keras</li>
+                        <li>Matplotlib, Plotly, Seaborn</li>
+                        <li>Transformers</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Systems</h3>
+                    <ul>
+                        <li>GitHub</li>
+                        <li>Jupyter Notebooks</li>
+                        <li>Microsoft & Google Suite</li>
+                        <li>MacOS, Windows, Linux</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Data Engineer</h3>
+                        <div class="experience-meta">Textron | Providence, Rhode Island | June 2024 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Leading the development of Azure-based AI chat and automation agents, revolutionizing how employees interact with internal platforms. Key achievements include:</p>
+                        <ul style="margin: 1rem 0 0 1.5rem; color: #4b5563;">
+                            <li style="margin-bottom: 0.5rem;">Development lead of AI chat and automation agents connected to an internal employee platform, enabling self-service task automation and improving efficiency across multiple business functions</li>
+                            <li style="margin-bottom: 0.5rem;">Engineered a reusable ingestion framework to automatically ingest SharePoint files into Azure Blob Storage, improving scalability and automation of data pipelines</li>
+                            <li style="margin-bottom: 0.5rem;">Constructed and analyzed career development data to create a refreshable dashboard bridging the gap between employee needs and classes offered</li>
+                            <li style="margin-bottom: 0.5rem;">Organized and taught a Lunch & Learn class on AI to over 100 corporate employees</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Data Science Co-op</h3>
+                        <div class="experience-meta">Catch Point Rights | New York, New York | July 2023 - January 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Collaborated directly with a founding partner to provide guidance on data acquisition and automation. Key contributions:</p>
+                        <ul style="margin: 1rem 0 0 1.5rem; color: #4b5563;">
+                            <li style="margin-bottom: 0.5rem;">Automated web scraping and API access processes using Python, streamlining data acquisition workflows</li>
+                            <li style="margin-bottom: 0.5rem;">Created a classification algorithm using Scikit-Learn to identify column headers, enabling quick identification of needed data from any dataset</li>
+                            <li style="margin-bottom: 0.5rem;">Built features accessing the Spotify API with customizable filters for year range, genre, title, and artist to assist in finding potential musicians to acquire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="education-section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <h3>Northeastern University</h3>
+                <p><strong>Bachelor of Science in Data Science</strong> | Minor in Mathematics</p>
+                <div class="education-details">
+                    <p><strong>GPA:</strong> 3.6/4.0</p>
+                    <p><strong>Awards:</strong> Dean's List, Dean's Scholarship</p>
+                    <p><strong>Activities:</strong> NUBarkada, Northeastern Data Club, Intramural Sports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Let's connect and build something impactful together</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://www.linkedin.com/in/sofiedcook/">LinkedIn</a>
+                <a href="https://github.com/sofiecook">GitHub</a>
+                <a href="mailto:sofiedcook@gmail.com">sofiedcook@gmail.com</a>
+                <a href="tel:5107355284">(510) 735-5284</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 Sofie Cook. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
