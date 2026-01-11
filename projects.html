@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Sofie Cook</title>
     <style>
+        :root {
+            --bg-main: #f8fafc;
+            --bg-dark: #172441;
+            --bg-card: #ffffff;
+
+            --text-main: #172441;
+            --text-muted: #475569;
+
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --accent-soft: #eef2ff;
+
+            --border-light: #e5e7eb;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,18 +28,19 @@
         }
         
         body {
-            background-color: #f9fafb;
-            color: #1f2933;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.6;
         }
         
         nav {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid var(--border-light);
         }
         
         nav .container {
@@ -38,8 +54,8 @@
         
         nav .logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: #d4691a;
+            font-weight: 800;
+            color: var(--accent);
         }
         
         nav ul {
@@ -50,13 +66,12 @@
         
         nav a {
             text-decoration: none;
-            color: #1f2933;
+            color: var(--text-main);
             font-weight: 500;
-            transition: color 0.3s;
         }
         
         nav a:hover {
-            color: #d4691a;
+            color: var(--accent);
         }
         
         .container {
@@ -71,14 +86,15 @@
         }
         
         header h1 {
-            font-size: 3rem;
-            color: #1f2933;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-main);
             margin-bottom: 1rem;
         }
         
         .subtitle {
-            color: #4b5563;
-            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
         
         .projects-grid {
@@ -89,10 +105,11 @@
         }
         
         .project {
-            background: white;
-            border-radius: 12px;
+            background: var(--bg-card);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 24px rgba(15,23,42,0.06);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
@@ -100,18 +117,19 @@
         
         .project:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 32px rgba(15,23,42,0.12);
         }
         
         .project-header {
-            background: linear-gradient(135deg, #d4691a 0%, #8b4513 100%);
+            background: var(--bg-dark);
             padding: 2rem;
             color: white;
         }
         
         .project-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0;
         }
         
         .project-content {
@@ -129,16 +147,16 @@
         }
         
         .tech-tag {
-            background: #ffeee0;
-            color: #d4691a;
-            padding: 0.25rem 0.75rem;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
         }
         
         .project-content p {
-            color: #4b5563;
+            color: var(--text-muted);
             margin-bottom: 1rem;
             line-height: 1.7;
         }
@@ -151,19 +169,19 @@
         }
         
         .project-links a {
-            color: #d4691a;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            padding: 0.5rem 1rem;
-            border: 2px solid #d4691a;
-            border-radius: 6px;
-            transition: all 0.3s;
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            transition: all 0.25s ease;
             text-align: center;
             flex: 1;
         }
         
         .project-links a:hover {
-            background: #d4691a;
+            background: var(--accent);
             color: white;
         }
         
@@ -179,30 +197,30 @@
         
         .highlights li {
             padding: 0.5rem 0;
-            color: #4b5563;
+            color: var(--text-muted);
             position: relative;
             padding-left: 1.5rem;
             line-height: 1.6;
         }
         
-        .highlights li:before {
-            content: "✓";
-            color: #d4691a;
+        .highlights li::before {
+            content: "▹";
+            color: var(--accent);
             font-weight: bold;
             position: absolute;
             left: 0;
         }
         
         footer {
-            background: #1f2933;
+            background: #020617;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             margin-top: 4rem;
         }
         
         footer a {
-            color: #d4691a;
+            color: var(--accent);
             text-decoration: none;
             margin: 0 1rem;
         }
@@ -243,7 +261,7 @@
     <div class="container">
         <header>
             <h1>My Projects</h1>
-            <p class="subtitle">Data science and engineering projects showcasing machine learning, cloud computing, and full-stack development</p>
+            <p class="subtitle">These are examples of data science and engineering projects showcasing machine learning, cloud computing, and full-stack development.</p>
         </header>
 
         <div class="projects-grid">
@@ -324,33 +342,29 @@
                     </div>
                 </div>
             </div>
-
             <div class="project">
                 <div class="project-header">
-                    <h3>Solar System Interactive Dashboard</h3>
+                    <h3>AWS Resume Matching Pipeline</h3>
                 </div>
                 <div class="project-content">
                     <div class="tech">
+                        <span class="tech-tag">AWS</span>
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Plotly Dash</span>
-                        <span class="tech-tag">Data Visualization</span>
-                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Lambda</span>
+                        <span class="tech-tag">MySQL</span>
                     </div>
-                    <p>Created an interactive dashboard visualizing the solar system with accurate distance and size relationships between planets and the sun.</p>
+                    <p>Constructed an end-to-end data pipeline on AWS to automatically process resumes, match them to job titles, and generate reports.</p>
                     <div class="highlights">
                         <ul>
-                            <li>Cleaned and processed astronomical data</li>
-                            <li>Built interactive features using Plotly Dash</li>
-                            <li>Visualized planetary distances and sizes to scale</li>
-                            <li>Presented findings in formal written report</li>
+                            <li>Flask application hosted on EC2 for resume ingestion</li>
+                            <li>AWS Lambda functions for data manipulation and job matching</li>
+                            <li>RDS MySQL database for structured data storage</li>
+                            <li>Automated report generation delivered to S3 buckets</li>
                         </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/sofiecook">View on GitHub</a>
                     </div>
                 </div>
             </div>
-
             <div class="project">
                 <div class="project-header">
                     <h3>Daily Zen Mental Health App</h3>
@@ -431,30 +445,6 @@
 
             <div class="project">
                 <div class="project-header">
-                    <h3>AWS Resume Matching Pipeline</h3>
-                </div>
-                <div class="project-content">
-                    <div class="tech">
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Lambda</span>
-                        <span class="tech-tag">MySQL</span>
-                    </div>
-                    <p>Constructed an end-to-end data pipeline on AWS to automatically process resumes, match them to job titles, and generate reports.</p>
-                    <div class="highlights">
-                        <ul>
-                            <li>Flask application hosted on EC2 for resume ingestion</li>
-                            <li>AWS Lambda functions for data manipulation and job matching</li>
-                            <li>RDS MySQL database for structured data storage</li>
-                            <li>Automated report generation delivered to S3 buckets</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
                     <h3>Column Header Classification</h3>
                 </div>
                 <div class="project-content">
@@ -471,6 +461,28 @@
                             <li>Trained model on various dataset structures</li>
                             <li>Automated data column identification process</li>
                             <li>Improved team efficiency in data analysis workflows</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-header">
+                    <h3>Solar System Interactive Dashboard</h3>
+                </div>
+                <div class="project-content">
+                    <div class="tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Plotly Dash</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                    <p>Created an interactive dashboard visualizing the solar system with accurate distance and size relationships between planets and the sun.</p>
+                    <div class="highlights">
+                        <ul>
+                            <li>Cleaned and processed astronomical data</li>
+                            <li>Built interactive features using Plotly Dash</li>
+                            <li>Visualized planetary distances and sizes to scale</li>
+                            <li>Presented findings in formal written report</li>
                         </ul>
                     </div>
                 </div>
@@ -538,7 +550,7 @@
                 <a href="https://github.com/sofiecook">GitHub</a>
                 <a href="mailto:sofiedcook@gmail.com">Email</a>
             </div>
-            <p style="margin-top: 2rem; opacity: 0.7;">© 2024 Sofie Cook. All rights reserved.</p>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 Sofie Cook. All rights reserved.</p>
         </div>
     </footer>
 </body>
